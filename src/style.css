@@ -1,0 +1,73 @@
+/* Общие настройки */
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-bkgd-color);
+}
+
+:root {
+  --main-font-size: 1rem;
+  --main-font-color: white;
+  --main-bkgd-color: rgb(70, 65, 113);
+  --input-bkgd-color: rgb(39, 37, 63);
+}
+
+/* Верхняя часть сайта */
+header {
+  background-color: var(--main-bkgd-color);
+  height: 10vh;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header form {
+  display: flex;
+}
+
+#cityInput {
+  background-color: var(--input-bkgd-color);
+  height: 5vh;
+  width: 30vw;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 15px 0 0 15px;
+  color: var(--main-font-color);
+  font-size: calc(var(--main-font-size) * 2);
+}
+
+#pushSearchButton {
+  background-color: var(--input-bkgd-color);
+  background-image: url(/img/loupe.svg);
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+  height: 5vh;
+  width: 3vw;
+  border: none;
+  border-radius: 0 15px 15px 0;
+}
+
+/* Основная часть сайта */
+main {
+  padding-top: 10vh;
+}
+
+#cityName {
+  text-align: center;
+  color: var(--main-font-color);
+  font-size: calc(var(--main-font-size) * 4);
+}
+
+#currentDate {
+  text-align: center;
+  color: var(--main-font-color);
+  font-size: calc(var(--main-font-size) * 3);
+}
