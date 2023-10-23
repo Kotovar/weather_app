@@ -13,6 +13,7 @@ body {
 :root {
   --main-font-size: 1rem;
   --main-font-color: white;
+  --date-font-color: rgb(136, 133, 133);
   --main-bkgd-color: rgb(70, 65, 113);
   --input-bkgd-color: rgb(39, 37, 63);
 }
@@ -58,16 +59,43 @@ header form {
 /* Основная часть сайта */
 main {
   padding-top: 10vh;
+  color: var(--main-font-color);
 }
 
 #cityName {
   text-align: center;
-  color: var(--main-font-color);
   font-size: calc(var(--main-font-size) * 4);
 }
 
 #currentDate {
   text-align: center;
-  color: var(--main-font-color);
+  color: var(--date-font-color);
   font-size: calc(var(--main-font-size) * 3);
+}
+
+#currentWeatherMainForm {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  font-size: calc(var(--main-font-size) * 2);
+  margin: 2rem 1rem 0 1rem;
+}
+
+#currentWeatherCards {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 1rem;
+  align-items: center;
+  justify-items: center;
+}
+
+#currentTemperature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#currentTemperature img {
+  height: 10rem;
+  width: 10rem;
 }
