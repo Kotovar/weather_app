@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>weather_app</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
     <header>
@@ -17,20 +21,48 @@
       <p id="currentDate"></p>
       <div id="currentWeatherMainForm">
         <div id="currentTemperature">
-          <img src="/img/not_found.svg" alt="" width="" />
-          <p>+10C</p>
-          <p>Feels like +5С</p>
+          <img src="/img/not_found.svg" alt="current weather" width="" />
+          <p></p>
+          <p></p>
         </div>
         <div id="currentWeatherCards">
-          <div class="cards">Humidity 100%</div>
-          <div class="cards">-> 10 m/s</div>
-          <div class="cards">Pressure 770mmHg</div>
-          <div class="cards">Air quality 10 pm2.5</div>
-          <div class="cards">UV index 1</div>
-          <div class="cards">Visibility range 10km</div>
-          <div class="cards">Sunrise 4.21</div>
-          <div class="cards">Sunset 18.20</div>
-          <div class="cards">Chance of rain 95%</div>
+          <div class="cards">
+            <p class="title">Humidity</p>
+            <p id="currentHumidity"></p>
+          </div>
+          <div class="cards" id="currentWind">
+            <p class="title">Wind</p>
+            <p id="windDir" class="material-symbols-outlined"></p>
+            <p id="windSpeed"></p>
+          </div>
+          <div class="cards">
+            <p class="title">Pressure</p>
+            <p id="pressure"></p>
+          </div>
+          <div class="cards">
+            <p class="title">Air quality</p>
+            <p id="airQuality"></p>
+          </div>
+          <div class="cards">
+            <p class="title">UV index</p>
+            <p id="uvIndex"></p>
+          </div>
+          <div class="cards">
+            <p class="title">Visibility range</p>
+            <p id="visibilityRange"></p>
+          </div>
+          <div class="cards">
+            <p class="title material-symbols-outlined">wb_sunny</p>
+            <p id="sunrise"></p>
+          </div>
+          <div class="cards">
+            <p class="title material-symbols-outlined">wb_twilight</p>
+            <p id="sunset"></p>
+          </div>
+          <div class="cards">
+            <p class="title">Chance of rain</p>
+            <p id="chanceRain"></p>
+          </div>
         </div>
       </div>
     </main>
