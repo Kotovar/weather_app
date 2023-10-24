@@ -8,6 +8,7 @@
 
 body {
   background-color: var(--main-bkgd-color);
+  font-family: "Cinzel", serif;
 }
 
 body::-webkit-scrollbar {
@@ -149,4 +150,45 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+/* настройки для мобильной версии */
+@media (max-width: 768px) {
+  #cityInput {
+    height: 5vh;
+    width: 90vw;
+  }
+
+  #currentWeatherMainForm {
+    grid-template-columns: 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+  }
+  #forecastWeather {
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --main-font-size: 0.8rem;
+  }
+
+  #currentWeatherCards {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-gap: 1rem;
+  }
+  #currentTemperature {
+    margin-bottom: 1rem;
+  }
+  .cards {
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .title {
+    border: 2px solid black;
+    border-radius: 10px;
+  }
 }

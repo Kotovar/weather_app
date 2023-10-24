@@ -12,16 +12,22 @@ const chanceRain = document.getElementById("chanceRain");
 const firstDay = document.getElementById("firstDay");
 const secondDay = document.getElementById("secondDay");
 const thirdDay = document.getElementById("thirdDay");
+const cityName = document.getElementById("cityName");
 
-export default async function getCurrentWeather() {
+export default async function getCurrentWeather(city) {
+  if (!city) {
+    return;
+  }
+
   try {
     const response = await fetch(
-      "http://api.weatherapi.com/v1/forecast.json?key=b6f6a59a427540edb9b104602232010&q=Krasnoyarsk&days=3&aqi=yes&alerts=no",
+      "http://api.weatherapi.com/v1/forecast.json?key=b6f6a59a427540edb9b104602232010&q=" +
+        city +
+        "&days=3&aqi=yes&alerts=no",
       { mode: "cors" }
     );
     if (response.ok) {
       const rawData = await response.json();
-      console.log(rawData);
       setTemperature(rawData);
       setHumidity(rawData);
       setWind(rawData);
@@ -33,12 +39,14 @@ export default async function getCurrentWeather() {
       setSunset(rawData);
       setChanceRain(rawData);
       setForecast(rawData);
+      setCity(rawData);
       return;
     }
 
     throw new Error(`Something went wrong: ${response.status}`);
   } catch (error) {
     console.error(error);
+    cityName.textContent = "Incorrect city indication";
   }
 }
 
@@ -125,19 +133,28 @@ function setForecast(currentData) {
     currentData.forecast.forecastday[2].day.avghumidity + "%",
     currentData.forecast.forecastday[2].day.maxwind_kph + "km/h",
   ];
-  const firstDayChildren = firstDay.children;
-  const secondDayChildren = secondDay.children;
-  const thirdDayChildren = thirdDay.children;
-  [...firstDayChildren].reduce((i, elem) => {
+  const dayChildren = [
+    firstDay.children,
+    secondDay.children,
+    thirdDay.children,
+  ];
+  const dayStart = [0, 4, 8];
+
+  [...dayChildren[0]].reduce((i, elem) => {
     elem.textContent = forecastData[i];
     return i + 1;
-  }, 0);
-  [...secondDayChildren].reduce((i, elem) => {
+  }, dayStart[0]);
+  [...dayChildren[1]].reduce((i, elem) => {
     elem.textContent = forecastData[i];
     return i + 1;
-  }, 4);
-  [...thirdDayChildren].reduce((i, elem) => {
+  }, dayStart[1]);
+  [...dayChildren[2]].reduce((i, elem) => {
     elem.textContent = forecastData[i];
     return i + 1;
-  }, 8);
+  }, dayStart[2]);
+}
+
+function setCity(currentData) {
+  cityName.textContent =
+    currentData.location.name + ", " + currentData.location.country;
 }
