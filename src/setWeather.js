@@ -9,6 +9,9 @@ const visibilityRange = document.getElementById("visibilityRange");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 const chanceRain = document.getElementById("chanceRain");
+const firstDay = document.getElementById("firstDay");
+const secondDay = document.getElementById("secondDay");
+const thirdDay = document.getElementById("thirdDay");
 
 export default async function getCurrentWeather() {
   try {
@@ -29,6 +32,7 @@ export default async function getCurrentWeather() {
       setSunrise(rawData);
       setSunset(rawData);
       setChanceRain(rawData);
+      setForecast(rawData);
       return;
     }
 
@@ -41,8 +45,8 @@ export default async function getCurrentWeather() {
 function setTemperature(currentData) {
   const currentDataElements = [
     currentData.current.condition.icon,
-    `${currentData.current.temp_c}° C now`,
-    `${currentData.current.feelslike_c}° C feels like`,
+    `${currentData.current.temp_c}°C now`,
+    `${currentData.current.feelslike_c}°C feels like`,
   ];
   const currentTemperatureChildren = currentTemperature.children;
   currentTemperatureChildren[0].src = currentDataElements[0];
@@ -82,7 +86,7 @@ function setPressure(currentData) {
 }
 
 function setAirQuality(currentData) {
-  airQuality.textContent = currentData.current.air_quality.pm2_5;
+  airQuality.textContent = currentData.current.air_quality.pm2_5 + " pm2.5";
 }
 
 function setUvIndex(currentData) {
@@ -104,4 +108,36 @@ function setSunset(currentData) {
 function setChanceRain(currentData) {
   chanceRain.textContent =
     currentData.forecast.forecastday[0].day.daily_chance_of_rain + " %";
+}
+
+function setForecast(currentData) {
+  const forecastData = [
+    currentData.forecast.forecastday[0].date,
+    currentData.forecast.forecastday[0].day.avgtemp_c + "°C",
+    currentData.forecast.forecastday[0].day.avghumidity + "%",
+    currentData.forecast.forecastday[0].day.maxwind_kph + "km/h",
+    currentData.forecast.forecastday[1].date,
+    currentData.forecast.forecastday[1].day.avgtemp_c + "°C",
+    currentData.forecast.forecastday[1].day.avghumidity + "%",
+    currentData.forecast.forecastday[1].day.maxwind_kph + "km/h",
+    currentData.forecast.forecastday[2].date,
+    currentData.forecast.forecastday[2].day.avgtemp_c + "°C",
+    currentData.forecast.forecastday[2].day.avghumidity + "%",
+    currentData.forecast.forecastday[2].day.maxwind_kph + "km/h",
+  ];
+  const firstDayChildren = firstDay.children;
+  const secondDayChildren = secondDay.children;
+  const thirdDayChildren = thirdDay.children;
+  [...firstDayChildren].reduce((i, elem) => {
+    elem.textContent = forecastData[i];
+    return i + 1;
+  }, 0);
+  [...secondDayChildren].reduce((i, elem) => {
+    elem.textContent = forecastData[i];
+    return i + 1;
+  }, 4);
+  [...thirdDayChildren].reduce((i, elem) => {
+    elem.textContent = forecastData[i];
+    return i + 1;
+  }, 8);
 }
