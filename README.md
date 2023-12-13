@@ -36,11 +36,11 @@ date-fns
 
 Eslint
 
-I received weather data using the API [[WeatherAPI](https://www.weatherapi.com/)] via fetch.
+I received weather data using the API [WeatherAPI](https://www.weatherapi.com/) via fetch.
 
 ![1 Main](https://github.com/Kotovar/weather_app/assets/77914431/acb3224d-d5b4-4464-848f-d8e8e92ecaaa)
 ![2 forecast](https://github.com/Kotovar/weather_app/assets/77914431/a49ee892-312d-49ca-a28e-b2a417ebb5ae)
 
 ## Credits
 
-This project was inspired by [[The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app)], which is an open source curriculum for learning web development.
+This project was inspired by [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-weather-app), which is an open source curriculum for learning web development.
